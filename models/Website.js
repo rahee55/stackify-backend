@@ -9,8 +9,6 @@ const WebsiteSchema = new mongoose.Schema({
   title: { type: String, required: true },
   prompt: { type: String, required: true },
 
-  // --- UPDATED CONTENT STRUCTURE ---
-  // This supports the Split-Screen Preview (Left: List, Right: Preview)
   content: { 
     title: String, 
     blocks: [

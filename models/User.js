@@ -11,16 +11,15 @@ const UserSchema = new mongoose.Schema({
     type: String, 
     required: true, 
     unique: true,
-    lowercase: true, // MODERN: "User@Email.com" becomes "user@email.com"
+    lowercase: true, 
     trim: true 
   },
   password: { 
     type: String, 
     required: true 
   },
+  role: { type: String, default: 'user', enum: ['user', 'admin'] },
 }, { timestamps: true });
-
-// MODERN FIX: No 'next' parameter needed with async/await
 UserSchema.pre('save', async function () {
   // 1. If password wasn't modified, exit immediately
   if (!this.isModified('password')) return;
